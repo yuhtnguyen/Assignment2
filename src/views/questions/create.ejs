@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Question</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/SDN302-17C/assignment-2/main/src/public/img/favicon.ico" type="image/x-icon">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        .required-label::after {
+            content: " *";
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <%- include ('../commons/header.ejs') %>
+
+    <div class="container mt-5 mb-4 pt-5 pb-5">
+        <h1 class="text-center mb-4">Create a New Question</h1>
+        <div class="alert alert-success d-none" id="successAlert" role="alert">
+            Question created successfully!
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <form id="questionForm" method="POST" action="/api/questions">
+                    <div class="form-group">
+                        <label for="text" class="required-label">Text</label>
+                        <input type="text" class="form-control" id="text" name="text" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="options" class="required-label">Options (separate by ";")</label>
+                        <input type="text" class="form-control" id="options" name="options" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="keywords">Keywords (separate by ";")</label>
+                        <input type="text" class="form-control" id="keywords" name="keywords">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="correctAnswer" class="required-label">Correct Answer</label>
+                        <select class="form-control" id="correctAnswer" name="correctAnswer" required>
+                            <option value="" disabled selected>-- Select your correct answer --</option>
+                        </select>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-3">
+                        <button type="button" class="btn btn-secondary" id="backButton">
+                            <i class="fas fa-arrow-left"></i> Back
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Create Question
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <%- include ('../commons/footer.ejs') %>
+
+    <script src="/js/questions/create.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
